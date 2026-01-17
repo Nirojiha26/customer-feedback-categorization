@@ -1,10 +1,9 @@
 using CustomerFeedback.Domain.Entities;
 
-namespace CustomerFeedback.Application.Interfaces
+namespace CustomerFeedback.Application.Interfaces;
+
+public interface IFeedbackRepository
 {
-    public interface IFeedbackRepository
-    {
-        Task AddAsync(Feedback feedback);
-        Task<List<Feedback>> GetAllAsync();
-    }
+    Task AddAsync(Feedback feedback);
+    Task<IEnumerable<Feedback>> GetAllAsync();
 }

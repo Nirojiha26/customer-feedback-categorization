@@ -2,31 +2,30 @@ using CustomerFeedback.Application.DTOs;
 using CustomerFeedback.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerFeedback.API.Controllers
+namespace CustomerFeedback.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class FeedbackController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class FeedbackController : ControllerBase
+    private readonly FeedbackService _service;
+
+    public FeedbackController(FeedbackService service)
     {
-        private readonly FeedbackService _service;
+        _service = service;
+    }
 
-        public FeedbackController(FeedbackService service)
-        {
-            _service = service;
-        }
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateFeedbackDto dto)
+    {
+        var feedback = await _service.CreateFeedbackAsync(dto);
+        return Ok(feedback);
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateFeedbackDto dto)
-        {
-            await _service.CreateFeedbackAsync(dto);
-            return Ok();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var feedbacks = await _service.GetAllAsync();
-            return Ok(feedbacks);
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var feedbacks = await _service.GetAllAsync();
+        return Ok(feedbacks);
     }
 }

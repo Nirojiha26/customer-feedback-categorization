@@ -1,12 +1,11 @@
 using CustomerFeedback.Domain.Enums;
 
-namespace CustomerFeedback.Domain.Entities
+namespace CustomerFeedback.Domain.Entities;
+
+public class Feedback
 {
-    public class Feedback
-    {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Message { get; set; } = string.Empty;
-        public FeedbackCategory Category { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    }
+    public Guid Id { get; set; }
+    public string Message { get; set; } = string.Empty;
+    public FeedbackCategory Category { get; set; }
+    public DateTime CreatedAt { get; set; }
 }

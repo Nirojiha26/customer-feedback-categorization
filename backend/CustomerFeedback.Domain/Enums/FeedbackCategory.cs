@@ -1,9 +1,8 @@
-namespace CustomerFeedback.Domain.Enums
+namespace CustomerFeedback.Domain.Enums;
+
+public enum FeedbackCategory
 {
-    public enum FeedbackCategory
-    {
-        Positive,
-        Negative,
-        Suggestion
-    }
+    Positive,
+    Negative,
+    Suggestion
 }

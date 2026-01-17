@@ -1,21 +1,20 @@
 using CustomerFeedback.Application.Interfaces;
 using CustomerFeedback.Domain.Entities;
 
-namespace CustomerFeedback.Infrastructure.Persistence.InMemory
+namespace CustomerFeedback.Infrastructure.Persistence.InMemory;
+
+public class InMemoryFeedbackRepository : IFeedbackRepository
 {
-    public class InMemoryFeedbackRepository : IFeedbackRepository
+    private readonly List<Feedback> _feedbacks = new();
+
+    public Task AddAsync(Feedback feedback)
     {
-        private static readonly List<Feedback> _feedbacks = new();
+        _feedbacks.Add(feedback);
+        return Task.CompletedTask;
+    }
 
-        public Task AddAsync(Feedback feedback)
-        {
-            _feedbacks.Add(feedback);
-            return Task.CompletedTask;
-        }
-
-        public Task<List<Feedback>> GetAllAsync()
-        {
-            return Task.FromResult(_feedbacks.ToList());
-        }
+    public Task<IEnumerable<Feedback>> GetAllAsync()
+    {
+        return Task.FromResult<IEnumerable<Feedback>>(_feedbacks);
     }
 }
