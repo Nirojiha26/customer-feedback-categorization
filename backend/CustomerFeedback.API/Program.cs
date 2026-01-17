@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 });
 
 // ✅ Dependency Injection
-builder.Services.AddScoped<IFeedbackRepository, InMemoryFeedbackRepository>();
+builder.Services.AddSingleton<IFeedbackRepository, InMemoryFeedbackRepository>();
 builder.Services.AddScoped<FeedbackService>();
 
 var app = builder.Build();
