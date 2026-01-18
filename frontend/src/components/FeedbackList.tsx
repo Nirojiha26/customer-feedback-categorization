@@ -9,13 +9,13 @@ const categoryMap: Record<number, string> = {
 const getCategoryColor = (category: number): string => {
   switch (category) {
     case 0:
-      return "#dc3545"; // Red for negative
+      return "#dc3545"; 
     case 1:
-      return "#28a745"; // Green for positive
+      return "#28a745"; 
     case 2:
-      return "#ffc107"; // Yellow for neutral
+      return "#ffc107"; 
     default:
-      return "#6c757d"; // Gray for unknown
+      return "#6c757d"; 
   }
 };
 
